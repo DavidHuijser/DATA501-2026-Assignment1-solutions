@@ -14,7 +14,7 @@ predict_model_B <- function(x, par) {
   A <- par[3]
   B <- par[4]
   freq <- par[5] 
-  b*x+c +  A*sin(2*freq*pi*x) + B*cos(2*freq*pi*x) 
+  b*x + c +  A*sin(2*freq*pi*x) + B*cos(2*freq*pi*x) 
   
   
 }
