@@ -37,17 +37,31 @@ fit_nonlinear <- function(x, y, start_par) {
   
   if (model_type == 'C')
   {
-      init_par <- c(start_par$a, start_par$c, start_par$A, start_par$B, start_par$freq)
-
-      objective_function <- function(par) {
+    init_par <- c(start_par$a, start_par$c, start_par$A, start_par$B, start_par$freq)
+    
+    objective_function <- function(par) {
       y_pred <- predict_model_C(x, par)
       sum((y - y_pred)^2)
+    }
+    
+    result <- optim(init_par, objective_function)
+    
+    result$model <- predict_model_C(x, result$par)
+  }
+  
+  if (model_type == 'D')
+  {
+      init_par <- c(start_par$c, start_par$A, start_par$B, start_par$freq)
+  
+      objective_function <- function(par) {
+        y_pred <- predict_model_D(x, par)
+        sum((y - y_pred)^2)
       }
   
       result <- optim(init_par, objective_function)
   
-      result$model <- predict_model_C(x, result$par)
-  }
+      result$model <- predict_model_D(x, result$par)
+   }
   
   result
   

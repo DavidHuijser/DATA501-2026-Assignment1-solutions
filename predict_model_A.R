@@ -1,5 +1,3 @@
-# 
-#
 predict_model_A <- function(x, par) {
   
   a <- par[1]
