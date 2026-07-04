@@ -3,6 +3,7 @@ library(ggplot2)
 source("fit_nonlinear.R")
 source("predict_model_A.R")
 source("predict_model_B.R")
+source("predict_model_C.R")
 source("plot_model.R")
 source("pipeline.R")
 
@@ -17,14 +18,14 @@ y <- my_data$y
 start_par <-  data.frame(a = c(0.001), b=c(0.0001), c=c(0.1),A=c(0.1),B= c(0.1), freq=c(4.5), n=c(5), model_type=c("A") )  
 
 # execute the code
-seq <- c("A", "B")
+seq <- c("A", "B", "C")
 for (v in seq)
 {
   start_par[8] <- v
   temp <- run_analysis(x,y,start_par)
 
   # visualize the data and the model
-  temp$plot
+  print(temp$plot)
   
   }
 
